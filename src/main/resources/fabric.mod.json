@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "villager-overlay",
+  "version": "${version}",
+  "name": "Villager Overlay",
+  "description": "A visually easily seen, user-friendly way to check the trade items of the villagers.",
+  "authors": [
+    "mymai1208"
+  ],
+  "license": "MIT",
+  "icon": "assets/examplemod/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      {
+        "adapter": "kotlin",
+        "value": "net.mymai1208.villageroverlay.VillagerOverlay"
+      }
+    ]
+  },
+  "mixins": [
+    "villager_overlay.mixins.json"
+  ],
+  "depends": {
+    "fabric-language-kotlin": "${fabric_kotlin_version}",
+    "fabricloader": ">=${fabric_loader_version}",
+    "minecraft": ">=1.20",
+    "java": ">=17"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.mymai1208.villageoverlay.mixin.impl",
+  "client": [
+    "ClientPlayNetworkHandlerMixin",
+    "MinecraftClientMixin",
+    "WorldRendererMixin"
+  ]
+}
