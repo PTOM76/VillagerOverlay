@@ -50,7 +50,3 @@ java {
 kotlin {
     jvmToolchain(17)
 }
-
-loom {
-
-}
