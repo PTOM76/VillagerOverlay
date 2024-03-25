@@ -39,9 +39,8 @@ public class ClientPlayNetworkHandlerMixin {
         }
 
         if(!VillagerOverlay.getOpenedVillagers().contains(villagerEntity.getUuid())) {
+            //サーバー側の交易情報をクライアント内部と同期
             villagerEntity.setOffers(packet.getOffers());
-
-            System.out.println("set trade offers");
 
             VillagerOverlay.getOpenedVillagers().add(villagerEntity.getUuid());
 

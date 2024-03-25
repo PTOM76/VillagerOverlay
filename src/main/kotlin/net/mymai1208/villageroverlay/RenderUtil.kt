@@ -16,20 +16,15 @@ object RenderUtil {
     fun renderVillagerOverlay(merchantEntity: MerchantEntity, x: Double, y: Double, z: Double, tickDelta: Double, matrixStack: MatrixStack, vertexConsumerProvider: VertexConsumerProvider, lightLevel: Int) {
         val offers = merchantEntity.offers
 
-        val select = (offers.size * (System.currentTimeMillis() % 4000) / 4000)
+        val index = (offers.size * (System.currentTimeMillis() % 4000) / 4000)
 
-        val offer = offers.getOrNull(select.toInt()) ?: offers[0]
+        val offer = offers.getOrNull(index.toInt()) ?: offers[0]
         val sellItem = offer.sellItem
         val buyItem = if(!offer.originalFirstBuyItem.isEmpty) offer.originalFirstBuyItem else offer.secondBuyItem
 
         val camX = MathHelper.lerp(tickDelta, merchantEntity.lastRenderX, merchantEntity.x) - x
         val camY = MathHelper.lerp(tickDelta, merchantEntity.lastRenderY, merchantEntity.y) - y
         val camZ = MathHelper.lerp(tickDelta, merchantEntity.lastRenderZ, merchantEntity.z) - z
-
-        val direction = Direction.getLookDirectionForAxis(merchantEntity, Direction.Axis.X)
-
-        val xSide = Math.abs(direction.offsetZ) * 1 == 0
-        val zSide = Math.abs(direction.offsetX) * 1 == 0
 
         var offsetY = 1 + (if (merchantEntity.isSleeping) 0.0 else 1.5)
 
@@ -39,7 +34,7 @@ object RenderUtil {
         matrixStack.translate(camX, camY + offsetY, camZ)
         matrixStack.push()
 
-        matrixStack.translate(if(xSide) 0.3 else 0.0, 0.0, if(zSide) 0.3 else 0.0)
+        matrixStack.translate(-0.3, 0.0, 0.0)
 
         matrixStack.scale(0.5f, 0.5f, 0.5f)
 
@@ -49,7 +44,7 @@ object RenderUtil {
 
         matrixStack.push()
 
-        matrixStack.translate(if(xSide) -0.3 else 0.0, 0.0, if(zSide) -0.3 else 0.0)
+        matrixStack.translate(0.3, 0.0, 0.0)
 
         matrixStack.scale(0.5f, 0.5f, 0.5f)
         renderItem(sellItem, matrixStack, vertexConsumerProvider, lightLevel, tickDelta)
@@ -59,13 +54,6 @@ object RenderUtil {
         matrixStack.pop()
 
         offsetY += 1
-
-        //スターマークの描画
-        /*matrixStack.push()
-        matrixStack.translate(camX, camY + offsetY, camZ)
-        matrixStack.scale(0.5f, 0.5f, 0.5f)
-
-        matrixStack.pop()*/
     }
 
     private fun renderItem(itemStack: ItemStack, matrixStack: MatrixStack, vertexConsumerProvider: VertexConsumerProvider, lightLevel: Int, tickDelta: Double, isRotation: Boolean = true) {

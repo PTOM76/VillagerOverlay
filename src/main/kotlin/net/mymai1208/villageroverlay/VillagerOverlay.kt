@@ -16,5 +16,6 @@ object VillagerOverlay : ClientModInitializer {
 
     override fun onInitializeClient() {
         openedVillagers.clear()
+        currentOpenVillager = null
     }
 }
