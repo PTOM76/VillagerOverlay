@@ -64,6 +64,10 @@ public abstract class MinecraftClientMixin implements IMinecraftClientMixin {
                 return;
             }
 
+            if(villageEntity.distanceTo(player) > 2) {
+                return;
+            }
+
             if (interactionManager.interactEntityAtLocation(player, villageEntity, entityHitResult, Hand.MAIN_HAND).isAccepted()) {
                 VillagerOverlay.setCurrentOpenVillager(villageEntity.getUuid());
 

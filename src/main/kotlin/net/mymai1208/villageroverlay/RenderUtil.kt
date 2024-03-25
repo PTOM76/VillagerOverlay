@@ -32,6 +32,11 @@ object RenderUtil {
         matrixStack.push()
 
         matrixStack.translate(camX, camY + offsetY, camZ)
+
+        val direction = Direction.getLookDirectionForAxis(merchantEntity, Direction.Axis.Z)
+
+        matrixStack.multiply(direction.rotationQuaternion)
+
         matrixStack.push()
 
         matrixStack.translate(-0.3, 0.0, 0.0)
@@ -57,6 +62,8 @@ object RenderUtil {
     }
 
     private fun renderItem(itemStack: ItemStack, matrixStack: MatrixStack, vertexConsumerProvider: VertexConsumerProvider, lightLevel: Int, tickDelta: Double, isRotation: Boolean = true) {
+        matrixStack.multiply(Direction.NORTH.rotationQuaternion)
+
         if(isRotation) {
             val rotation = (360f * (System.currentTimeMillis() % 4000) / 4000) - tickDelta.toFloat()
             matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(rotation))

@@ -1,9 +1,8 @@
 package net.mymai1208.villageroverlay
 
 import net.fabricmc.api.ClientModInitializer
-import org.apache.commons.lang3.tuple.Pair
 import org.apache.logging.log4j.LogManager
-import java.util.UUID
+import java.util.*
 
 object VillagerOverlay : ClientModInitializer {
     @JvmStatic
