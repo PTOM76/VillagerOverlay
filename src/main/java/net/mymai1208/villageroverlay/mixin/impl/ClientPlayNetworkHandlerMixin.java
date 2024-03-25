@@ -6,7 +6,6 @@ import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.network.packet.s2c.play.SetTradeOffersS2CPacket;
 import net.minecraft.util.hit.EntityHitResult;
 import net.mymai1208.villageroverlay.VillagerOverlay;
-import net.mymai1208.villageroverlay.mixin.IMinecraftClientMixin;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -21,9 +20,7 @@ public class ClientPlayNetworkHandlerMixin {
             return;
         }
 
-        IMinecraftClientMixin mcClient = (IMinecraftClientMixin)minecraft;
-
-        if(!(mcClient.villagerOverlay$getCrossHairTarget() instanceof EntityHitResult entityHitResult)) {
+        if(!(minecraft.crosshairTarget instanceof EntityHitResult entityHitResult)) {
             return;
         }
 

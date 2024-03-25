@@ -9,7 +9,6 @@ import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.village.VillagerProfession;
 import net.mymai1208.villageroverlay.VillagerOverlay;
-import net.mymai1208.villageroverlay.mixin.IMinecraftClientMixin;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -21,18 +20,12 @@ import java.util.Arrays;
 import java.util.List;
 
 @Mixin(MinecraftClient.class)
-public abstract class MinecraftClientMixin implements IMinecraftClientMixin {
-    @Shadow @Nullable public HitResult crosshairTarget;
-
+public abstract class MinecraftClientMixin {
     @Shadow @Nullable public ClientPlayerInteractionManager interactionManager;
 
     @Shadow @Nullable public ClientPlayerEntity player;
 
-    @Override
-    public HitResult villagerOverlay$getCrossHairTarget() {
-        return crosshairTarget;
-    }
-
+    @Shadow @Nullable public HitResult crosshairTarget;
     private static final List<VillagerProfession> NO_JOBS = Arrays.asList(VillagerProfession.NONE, VillagerProfession.NITWIT);
 
     @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/ClientPlayerInteractionManager;tick()V"))
