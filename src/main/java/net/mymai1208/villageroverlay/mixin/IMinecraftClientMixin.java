@@ -1,4 +1,4 @@
-package net.mymai1208.villageoverlay.mixin;
+package net.mymai1208.villageroverlay.mixin;
 
 import net.minecraft.util.hit.HitResult;
 

@@ -1,4 +1,4 @@
-package net.mymai1208.villageoverlay.mixin.impl;
+package net.mymai1208.villageroverlay.mixin.impl;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
@@ -8,8 +8,8 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.village.VillagerProfession;
-import net.mymai1208.villageoverlay.mixin.IMinecraftClientMixin;
 import net.mymai1208.villageroverlay.VillagerOverlay;
+import net.mymai1208.villageroverlay.mixin.IMinecraftClientMixin;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -35,7 +35,7 @@ public abstract class MinecraftClientMixin implements IMinecraftClientMixin {
 
     private static final List<VillagerProfession> NO_JOBS = Arrays.asList(VillagerProfession.NONE, VillagerProfession.NITWIT);
 
-    @Inject(method = "tick", at = @At("TAIL"))
+    @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/ClientPlayerInteractionManager;tick()V"))
     public void tick(CallbackInfo ci) {
         if(crosshairTarget != null) {
             if (crosshairTarget.getType() != HitResult.Type.ENTITY) {

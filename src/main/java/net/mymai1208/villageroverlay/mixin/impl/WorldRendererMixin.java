@@ -1,6 +1,7 @@
-package net.mymai1208.villageoverlay.mixin.impl;
+package net.mymai1208.villageroverlay.mixin.impl;
 
-import net.minecraft.client.render.*;
+import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.WorldRenderer;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;

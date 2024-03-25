@@ -1,17 +1,12 @@
-package net.mymai1208.villageoverlay.mixin.impl;
+package net.mymai1208.villageroverlay.mixin.impl;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
-import net.minecraft.client.world.ClientWorld;
-import net.minecraft.entity.passive.MerchantEntity;
 import net.minecraft.entity.passive.VillagerEntity;
-import net.minecraft.network.packet.s2c.play.OpenScreenS2CPacket;
 import net.minecraft.network.packet.s2c.play.SetTradeOffersS2CPacket;
-import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.hit.EntityHitResult;
-import net.mymai1208.villageoverlay.mixin.IMinecraftClientMixin;
 import net.mymai1208.villageroverlay.VillagerOverlay;
-import org.apache.commons.lang3.tuple.Pair;
+import net.mymai1208.villageroverlay.mixin.IMinecraftClientMixin;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;

@@ -8,7 +8,7 @@
     "mymai1208"
   ],
   "license": "MIT",
-  "icon": "assets/examplemod/icon.png",
+  "icon": "assets/villager-overlay/icon.png",
   "environment": "*",
   "entrypoints": {
     "client": [
